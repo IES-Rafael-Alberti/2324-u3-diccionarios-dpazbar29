@@ -1,6 +1,6 @@
 #3.2.8
 
-def traductor(palabras):
+def diccionario(palabras):
 
     diccionario = {}
 
@@ -10,7 +10,7 @@ def traductor(palabras):
     
     return diccionario
 
-def mensajeSalida(diccionario):
+def traductor(diccionario):
     resultado = []
 
     frase = input("Frase en español: ")
@@ -22,16 +22,19 @@ def mensajeSalida(diccionario):
             resultado.append(i)
     
     strResultado = " ".join(resultado)
-    return strResultado
+    return frase , strResultado
 
+def mensajeSalida(frase,strResultado):
+    return "La frase en español: " + str(frase) + "\nLa frase traducida al inglés: " + str(strResultado)
 if __name__ == "__main__":
 
     #entrada
     palabras = input("Introduce la palabra y su traducción de la siguiente manera(palabra:traducción,palabra:traducción): ")
 
     #proceso
-    diccionario = traductor(palabras)
-    mensaje = mensajeSalida(diccionario)
+    dic = diccionario(palabras)
+    frase , strResultado = traductor(dic)
+    mensaje = (mensajeSalida(frase , strResultado))
 
     #salida
     print(mensaje)

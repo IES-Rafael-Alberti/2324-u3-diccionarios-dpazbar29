@@ -9,14 +9,25 @@ from src.E_3_2_8 import *
     ]
 )
 
-def test_traductor(input_x,expected):
-    assert traductor(input_x) == expected 
+def test_diccionario(input_x,expected):
+    assert diccionario(input_x) == expected 
 
 
-def test_mensajeSalida(monkeypatch):
+def test_traductor(monkeypatch):
     diccionario = {"hola":"hello","madre":"mother"}
     input_values = "hola madre"
     def mock_input(s):
         return input_values
     monkeypatch.setattr("builtins.input",mock_input)
-    assert mensajeSalida(diccionario) == "hello mother"
+    assert traductor(diccionario) == ('hola madre', 'hello mother')
+
+
+@pytest.mark.parametrize(
+    "input_x,input_y,expected",
+    [
+        ('hola madre', 'hello mother',"La frase en español: hola madre\nLa frase traducida al inglés: hello mother")
+    ]
+)
+
+def test_mensajeSalida(input_x,input_y,expected):
+    assert mensajeSalida(input_x,input_y) == expected
