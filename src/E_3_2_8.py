@@ -5,8 +5,8 @@ def traductor(palabras):
     diccionario = {}
 
     for i in palabras.split(','):
-        clave, valor = i.split(':')
-        diccionario[clave] = valor
+        palabra_español, palabra_ingles = i.split(':')
+        diccionario[palabra_español] = palabra_ingles
     
     return diccionario
 
